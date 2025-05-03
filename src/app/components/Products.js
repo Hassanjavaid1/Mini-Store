@@ -17,6 +17,8 @@ function Products() {
           {/* Item Cards */}
           {isLoading ? (
             <Loader />
+          ) : data.length == 0 ? (
+            <h1>No Result Found</h1>
           ) : (
             data?.map(({ id, title, price, image }) => (
               <div
@@ -31,8 +33,11 @@ function Products() {
                   alt="item"
                 />
                 <div className="mt-3 text-left">
-                  <div className="text-lg">{String(title).slice(0, 35)}</div>
+                  <div className="text-lg">{String(title).slice(0, 45)}</div>
                   <div className="text-md font-semibold">${price}</div>
+                  <button className="bg-[#3B82F6] text-white cursor-pointer p-2 py-1 mt-2">
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             ))

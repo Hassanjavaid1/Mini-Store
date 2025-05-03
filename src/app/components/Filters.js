@@ -1,10 +1,103 @@
-import React from "react";
+"use client";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useContext, useEffect, useState } from "react";
+import { contextApi } from "../Context";
 
 function Filters() {
+  const [selectedOptions, setSelectedOptions] = useState({
+    category: [],
+    size: "",
+    price: [],
+  });
+  const { setData } = useContext(contextApi);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const nextParams = new URLSearchParams(searchParams.toString());
+
+  const handleChange = (filterName, value, checked) => {
+    setSelectedOptions((prev) => {
+      // multi values filter
+      if (Array.isArray(prev[filterName])) {
+        const list = prev[filterName];
+        return {
+          ...prev,
+          [filterName]: checked
+            ? [...list, value]
+            : list.filter((v) => v !== value),
+        };
+      }
+
+      // single value filter.
+      return { ...prev, [filterName]: value };
+    });
+  };
+
+  //Apply Filter.
+
+  const handleFilters = async () => {
+    try {
+      for (let key in selectedOptions) {
+        nextParams.delete(key);
+        let value = selectedOptions[key];
+        if (Array.isArray(value)) {
+          value.forEach((v) => {
+            if (v) nextParams.append(key, v);
+          });
+        } else if (value) {
+          nextParams.append(key, value);
+        }
+      }
+      router.replace(`?${nextParams.toString()}`,undefined, { shallow: true });
+
+      if(router.isReady){
+        const query = router.query;
+        console.log('-----------------',query)
+      }
+
+      // Fetch Filters Data.
+
+      const url = await fetch("/api/filter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(selectedOptions),
+      });
+      const result = await url.json();
+      setData(result);
+      console.log("FINAL RESULT", result);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    // updated filter state.
+
+    for (const [key, value] of searchParams.entries()) {
+      setSelectedOptions((prev) => {
+        if (Array.isArray(prev[key])) {
+          const list = prev[key];
+          return {
+            ...prev,
+            [key]: [...list, value],
+          };
+        }
+        return { ...prev, [key]: value };
+      });
+    }
+
+    // Page Load function call.
+    handleFilters();
+  }, []);
+
+  useEffect(() => {
+    console.log(selectedOptions);
+    console.log("CHAL DEKH", selectedOptions);
+  }, [handleChange]);
+
   return (
     <>
       <section className="w-[15%] sticky top-0 h-[100vh] bg-[#38090a2e] py-6 px-2">
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           {/* Categoy Filter */}
           <div>
             <h2 className="px-2 font-semibold text-lg my-2">By Categories</h2>
@@ -12,9 +105,13 @@ function Filters() {
               <li className="flex items-center text-lg">
                 <input
                   type="checkbox"
-                  name="men-cloths"
+                  value="men-cloths"
                   id="men-cloths"
                   className="w-[2rem] h-[1.3rem] cursor-pointer"
+                  onChange={(e) =>
+                    handleChange("category", e.target.value, e.target.checked)
+                  }
+                  checked={selectedOptions.category.includes("men-cloths")}
                 />
                 <label className="cursor-pointer" htmlFor="men-cloths">
                   Men's Clothing
@@ -23,9 +120,13 @@ function Filters() {
               <li className="flex items-center text-lg">
                 <input
                   type="checkbox"
-                  name="women-cloths"
+                  value="women-cloths"
                   id="women-cloths"
                   className="w-[2rem] h-[1.3rem] cursor-pointer"
+                  onChange={(e) =>
+                    handleChange("category", e.target.value, e.target.checked)
+                  }
+                  checked={selectedOptions.category.includes("women-cloths")}
                 />
                 <label className="cursor-pointer" htmlFor="women-cloths">
                   Women's Clothing
@@ -34,20 +135,28 @@ function Filters() {
               <li className="flex items-center text-lg">
                 <input
                   type="checkbox"
-                  name="jewelry"
-                  id="jewelry"
+                  value="jewelery"
+                  id="jewelery"
                   className="w-[2rem] h-[1.3rem] cursor-pointer"
+                  onChange={(e) =>
+                    handleChange("category", e.target.value, e.target.checked)
+                  }
+                  checked={selectedOptions.category.includes("jewelery")}
                 />
-                <label className="cursor-pointer" htmlFor="jewelry">
-                  Jewelry
+                <label className="cursor-pointer" htmlFor="jewelery">
+                  Jewelery
                 </label>
               </li>
               <li className="flex items-center text-lg">
                 <input
                   type="checkbox"
-                  name="electronics"
+                  value="electronics"
                   id="electronics"
                   className="w-[2rem] h-[1.3rem] cursor-pointer"
+                  onChange={(e) =>
+                    handleChange("category", e.target.value, e.target.checked)
+                  }
+                  checked={selectedOptions.category.includes("electronics")}
                 />
                 <label className="cursor-pointer" htmlFor="electronics">
                   Electronics
@@ -61,13 +170,12 @@ function Filters() {
           <div>
             <h2 className="px-2 font-semibold text-lg my-2 mt-4">By Size</h2>
             <select
-              name="size"
               id="size"
+              value={selectedOptions.size || ""}
               className="bg-[#c4bfbf] w-full outline-none border-0 py-3 px-2"
+              onChange={(e) => handleChange("size", e.target.value, null)}
             >
-              <option value="" defaultChecked>
-                Select Size
-              </option>
+              <option value="">Select Size</option>
               <option value="small">Small</option>
               <option value="medium">Medium</option>
               <option value="large">Large</option>
@@ -83,9 +191,13 @@ function Filters() {
               <li className="flex items-center text-lg font-semibold">
                 <input
                   type="checkbox"
-                  name="0-50"
+                  value="0-50"
                   id="0-50"
                   className="w-[2rem] h-[1.3rem] cursor-pointer"
+                  onChange={(e) =>
+                    handleChange("price", e.target.value, e.target.checked)
+                  }
+                  checked={selectedOptions.price.includes("0-50")}
                 />
                 <label className="cursor-pointer" htmlFor="0-50">
                   $0 - $50
@@ -94,9 +206,13 @@ function Filters() {
               <li className="flex items-center text-lg font-semibold">
                 <input
                   type="checkbox"
-                  name="51-100"
+                  value="51-100"
                   id="51-100"
                   className="w-[2rem] h-[1.3rem] cursor-pointer"
+                  onChange={(e) =>
+                    handleChange("price", e.target.value, e.target.checked)
+                  }
+                  checked={selectedOptions.price.includes("51-100")}
                 />
                 <label className="cursor-pointer" htmlFor="51-100">
                   $51 - $100
@@ -105,11 +221,15 @@ function Filters() {
               <li className="flex items-center text-lg font-semibold">
                 <input
                   type="checkbox"
-                  name="101+"
-                  id="101+"
+                  value="101"
+                  id="101"
                   className="w-[2rem] h-[1.3rem] cursor-pointer"
+                  onChange={(e) =>
+                    handleChange("price", e.target.value, e.target.checked)
+                  }
+                  checked={selectedOptions.price.includes("101")}
                 />
-                <label className="cursor-pointer" htmlFor="101+">
+                <label className="cursor-pointer" htmlFor="101">
                   $101+
                 </label>
               </li>
@@ -117,7 +237,12 @@ function Filters() {
           </div>
 
           {/* Filter Button */}
-          <button className="bg-[#3b82f6] text-white px-8 py-2 cursor-pointer text-lg mt-6">Apply</button>
+          <button
+            onClick={handleFilters}
+            className="bg-[#3b82f6] text-white px-8 py-2 cursor-pointer text-lg mt-6"
+          >
+            Apply
+          </button>
         </form>
       </section>
     </>

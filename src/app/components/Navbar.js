@@ -26,7 +26,7 @@ function Navbar() {
       <div className="container mx-auto p-4">
         <div className="flex items-center justify-between gap-2">
           <h1 className="text-3xl font-semibold">Mini Store.</h1>
-          <form onSubmit={'handleSearch'} className="flex items-center gap-2">
+          <form  className="flex items-center gap-2">
             <input
               type="text"
               placeholder="Search products..."
@@ -37,6 +37,7 @@ function Navbar() {
             <button className="bg-gray-200 text-lg font-semibold outline-none p-3 cursor-pointer hover:bg-[#3b82f6] hover:text-white">
               Search
             </button>
+            {/* <button>+</button> */}
           </form>
         </div>
       </div>
