@@ -96,7 +96,7 @@ function Filters() {
                   checked={selectedOptions.category.includes("men-cloths")}
                 />
                 <label className="cursor-pointer" htmlFor="men-cloths">
-                  Men's Clothing
+                  Men&lsquo;s Clothing
                 </label>
               </li>
               <li className="flex items-center text-lg">
@@ -111,7 +111,7 @@ function Filters() {
                   checked={selectedOptions.category.includes("women-cloths")}
                 />
                 <label className="cursor-pointer" htmlFor="women-cloths">
-                  Women's Clothing
+                  Women&lsquo;s Clothing
                 </label>
               </li>
               <li className="flex items-center text-lg">
