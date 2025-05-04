@@ -4,19 +4,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { contextApi } from "../Context";
 
 function Filters() {
-  const [selectedOptions, setSelectedOptions] = useState({
-    category: [],
-    size: "",
-    price: [],
-  });
-  const { setData } = useContext(contextApi);
+  const { setData, setIsLoading, selectedOptions, setSelectedOptions } =
+    useContext(contextApi);
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const nextParams = new URLSearchParams(searchParams.toString());
 
   const handleChange = (filterName, value, checked) => {
     setSelectedOptions((prev) => {
-      // multi values filter
+      // Multi values filter
       if (Array.isArray(prev[filterName])) {
         const list = prev[filterName];
         return {
@@ -27,7 +24,7 @@ function Filters() {
         };
       }
 
-      // single value filter.
+      // Single value filter.
       return { ...prev, [filterName]: value };
     });
   };
@@ -36,6 +33,10 @@ function Filters() {
 
   const handleFilters = async () => {
     try {
+      setIsLoading(true);
+
+      // Set Query to URL.
+
       for (let key in selectedOptions) {
         nextParams.delete(key);
         let value = selectedOptions[key];
@@ -47,12 +48,7 @@ function Filters() {
           nextParams.append(key, value);
         }
       }
-      router.replace(`?${nextParams.toString()}`,undefined, { shallow: true });
-
-      if(router.isReady){
-        const query = router.query;
-        console.log('-----------------',query)
-      }
+      router.replace(`?${nextParams.toString()}`);
 
       // Fetch Filters Data.
 
@@ -63,35 +59,21 @@ function Filters() {
       });
       const result = await url.json();
       setData(result);
-      console.log("FINAL RESULT", result);
+
+      // console.log("FINAL RESULT", result);
+
+      //Response Delay.
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     } catch (err) {
+      setIsLoading(true);
       console.error(err);
     }
   };
 
   useEffect(() => {
-    // updated filter state.
-
-    for (const [key, value] of searchParams.entries()) {
-      setSelectedOptions((prev) => {
-        if (Array.isArray(prev[key])) {
-          const list = prev[key];
-          return {
-            ...prev,
-            [key]: [...list, value],
-          };
-        }
-        return { ...prev, [key]: value };
-      });
-    }
-
-    // Page Load function call.
-    handleFilters();
-  }, []);
-
-  useEffect(() => {
     console.log(selectedOptions);
-    console.log("CHAL DEKH", selectedOptions);
   }, [handleChange]);
 
   return (

@@ -3,9 +3,9 @@
     "id": 1,
     "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
     "price": 109.95,
-    "category": "men-cloths",
+    "category": "women-cloths",
     "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-    "rating": { "rate": 3.9, "count": 120 },
+    "qty": 1,
     "size": "large"
   },
   {
@@ -14,7 +14,7 @@
     "price": 22.3,
     "category": "men-cloths",
     "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-    "rating": { "rate": 4.1, "count": 259 },
+    "qty": 1,
     "size": "small"
   },
   {
@@ -23,8 +23,8 @@
     "price": 55.99,
     "category": "men-cloths",
     "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    "rating": { "rate": 4.7, "count": 500 },
-    "size": "x-large"
+    "qty": 1,
+    "size": null
   },
   {
     "id": 4,
@@ -32,7 +32,7 @@
     "price": 15.99,
     "category": "men-cloths",
     "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-    "rating": { "rate": 2.1, "count": 430 },
+    "qty": 1,
     "size": "small"
   },
   {
@@ -41,7 +41,7 @@
     "price": 695,
     "category": "jewelery",
     "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
-    "rating": { "rate": 4.6, "count": 400 },
+    "qty": 1,
     "size": "medium"
   },
   {
@@ -50,7 +50,7 @@
     "price": 168,
     "category": "jewelery",
     "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
-    "rating": { "rate": 3.9, "count": 70 },
+    "qty": 1,
     "size": "small"
   },
   {
@@ -59,7 +59,7 @@
     "price": 9.99,
     "category": "jewelery",
     "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
-    "rating": { "rate": 3, "count": 400 },
+    "qty": 1,
     "size": "smal"
   },
   {
@@ -68,7 +68,7 @@
     "price": 10.99,
     "category": "jewelery",
     "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
-    "rating": { "rate": 1.9, "count": 100 },
+    "qty": 1,
     "size": "large"
   },
   {
@@ -77,8 +77,8 @@
     "price": 64,
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-    "rating": { "rate": 3.3, "count": 203 },
-    "size": "medium"
+    "qty": 1,
+    "size": null
   },
   {
     "id": 10,
@@ -86,8 +86,8 @@
     "price": 109,
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
-    "rating": { "rate": 2.9, "count": 470 },
-    "size": "medium"
+    "qty": 1,
+    "size": null
   },
   {
     "id": 11,
@@ -95,8 +95,8 @@
     "price": 109,
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
-    "rating": { "rate": 4.8, "count": 319 },
-    "size": "medium"
+    "qty": 1,
+    "size": null
   },
   {
     "id": 12,
@@ -104,7 +104,7 @@
     "price": 114,
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
-    "rating": { "rate": 4.8, "count": 400 },
+    "qty": 1,
     "size": "medium"
   },
   {
@@ -113,7 +113,7 @@
     "price": 599,
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
-    "rating": { "rate": 2.9, "count": 250 },
+    "qty": 1,
     "size": "medium"
   },
   {
@@ -122,7 +122,7 @@
     "price": 999.99,
     "category": "electronics",
     "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-    "rating": { "rate": 2.2, "count": 140 },
+    "qty": 1,
     "size": "medium"
   },
   {
@@ -131,7 +131,7 @@
     "price": 56.99,
     "category": "women-cloths",
     "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
-    "rating": { "rate": 2.6, "count": 235 },
+    "qty": 1,
     "size": "large"
   },
   {
@@ -140,8 +140,8 @@
     "price": 29.95,
     "category": "women-cloths",
     "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
-    "rating": { "rate": 2.9, "count": 340 },
-    "size": "x-large"
+    "qty": 1,
+    "size": null
   },
   {
     "id": 17,
@@ -149,7 +149,7 @@
     "price": 39.99,
     "category": "women-cloths",
     "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
-    "rating": { "rate": 3.8, "count": 679 },
+    "qty": 1,
     "size": "medium"
   },
   {
@@ -158,7 +158,7 @@
     "price": 9.85,
     "category": "women-cloths",
     "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
-    "rating": { "rate": 4.7, "count": 130 },
+    "qty": 1,
     "size": "small"
   },
   {
@@ -167,7 +167,7 @@
     "price": 7.95,
     "category": "women-cloths",
     "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
-    "rating": { "rate": 4.5, "count": 146 },
+    "qty": 1,
     "size": "large"
   },
   {
@@ -176,7 +176,7 @@
     "price": 12.99,
     "category": "women-cloths",
     "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
-    "rating": { "rate": 3.6, "count": 145 },
+    "qty": 1,
     "size": "medium"
   }
 ]
