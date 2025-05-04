@@ -1,11 +1,14 @@
 "use client";
 
+import { Suspense } from "react";
 import Context from "./Context";
 
 function ComponentsWrapper({ children }) {
   return (
     <>
-      <Context>{children}</Context>
+      <Suspense fallback={null}>
+        <Context>{children}</Context>
+      </Suspense>
     </>
   );
 }
