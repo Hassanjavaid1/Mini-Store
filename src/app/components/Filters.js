@@ -2,10 +2,12 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { contextApi } from "../Context";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 function Filters() {
   const { setData, setIsLoading, selectedOptions, setSelectedOptions } =
     useContext(contextApi);
+  const [isVisible, setIsVisible] = useState(false);
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -76,10 +78,25 @@ function Filters() {
     console.log(selectedOptions);
   }, [handleChange]);
 
+  // handle visiblity on mobile.
+
+  const handleToggle = () => {
+    if (isVisible) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
   return (
     <>
-      <section className="w-[15%] sticky top-0 h-[100vh] bg-[#38090a2e] py-6 px-2">
-        <form onSubmit={(e) => e.preventDefault()}>
+      <section className="fixed left-0 sm:sticky sm:top-0 h-[100vh] bg-gray-200 sm:bg-[#38090a2e] py-6 px-2 lg:w-[15%]">
+        <RxHamburgerMenu
+          className="text-3xl sm:hidden"
+          onClick={handleToggle}
+        />
+
+        <form onSubmit={(e) => e.preventDefault()} className={`${isVisible?"block":"hidden"} sm:block`}>
           {/* Categoy Filter */}
           <div>
             <h2 className="px-2 font-semibold text-lg my-2">By Categories</h2>

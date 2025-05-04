@@ -41,7 +41,7 @@ function Navbar() {
       <div className="container mx-auto p-4">
         <div className="flex items-center justify-between gap-2">
           <h1
-            className="text-3xl font-semibold cursor-pointer"
+            className="text-3xl font-semibold cursor-pointer hidden sm:block"
             onClick={() => router.push("/")}
           >
             Mini Store.

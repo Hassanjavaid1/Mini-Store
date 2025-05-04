@@ -2,6 +2,7 @@
 import React from "react";
 import Lottie from "lottie-react";
 import loaderJSON from "../../../public/Loader.json";
+
 function Loader() {
   return (
     <>
