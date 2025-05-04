@@ -5,7 +5,7 @@ import { contextApi } from "../Context";
 import Image from "next/image";
 import { toast, ToastContainer } from "react-toastify";
 
-function page() {
+function Page() {
   const { saveData, setSaveData, setSaveDataLength } = useContext(contextApi);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -116,4 +116,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
