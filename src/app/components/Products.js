@@ -27,9 +27,9 @@ function Products() {
   };
 
   //Checking response
-  useEffect(() => {
-    console.log("Data", data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log("Data", data);
+  // }, [data]);
 
   return (
     <>

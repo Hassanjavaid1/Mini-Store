@@ -15,7 +15,7 @@ export async function POST(request) {
 
         if (body.price.includes("0-50")) {
           price = price || (element.price >= 0 && element.price <= 50);
-          console.log("LESS PRICE", price);
+         // console.log("LESS PRICE", price);
         }
         if (body.price.includes("51-100"))
           price = price || (element.price >= 51 && element.price <= 100);
@@ -24,7 +24,6 @@ export async function POST(request) {
 
         return category || size || price;
       });
-      console.log(filtered);
 
       return NextResponse.json(filtered);
     }

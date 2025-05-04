@@ -74,9 +74,9 @@ function Filters() {
     }
   };
 
-  useEffect(() => {
-    console.log(selectedOptions);
-  }, [handleChange]);
+  // useEffect(() => {
+  //   console.log(selectedOptions);
+  // }, [handleChange]);
 
   // handle visiblity on mobile.
 
