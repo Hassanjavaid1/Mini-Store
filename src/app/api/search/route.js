@@ -3,9 +3,7 @@ import productsJson from "@/../data/product.json";
 
 export async function GET(request) {
   try {
-    const { searchParams } = new URL(request.url);
-    const search = searchParams?.get("q") || "";
-
+    const search = request.nextUrl.searchParams.get("q") || "";
     let queryResult = productsJson.filter((item) => {
       return item.title.toLowerCase().includes(search.toLowerCase());
     });

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useContext, useState } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { contextApi } from "../Context";
