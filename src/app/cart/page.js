@@ -52,16 +52,16 @@ function Page() {
                 ({ id, title, image, price, qty, category, size }) => (
                   <div
                     key={id}
-                    className="flex items-center justify-between gap-4"
+                    className="flex flex-col items-baseline justify-between gap-4 md:flex-row md:items-center"
                   >
-                    <div className="flex items-center gap-5 w-[50%]">
+                    <div className="flex items-center gap-5 md:w-[50%]">
                       <Image
                         src={image}
                         alt="hello"
                         height={300}
                         width={100}
                         loading="lazy"
-                        className="object-center w-auto h-[100px] sm:h-[300px]"
+                        className="object-center w-auto h-[80px] lg:h-[300px]"
                       />
                       <div>
                         <p className="font-semibold">{title?.slice(0, 50)}</p>
@@ -74,24 +74,28 @@ function Page() {
                         </div>
                       </div>
                     </div>
-                    <input
-                      type="number"
-                      name="qty"
-                      value={qty}
-                      onChange={(e) => handleQtyChange(id, e.target.value)}
-                      className="border-2 p-1 font-semibold text-[1.2rem] text-center"
-                    />
-                    <FaRegWindowClose
-                      onClick={() => removeFromCart(id)}
-                      className="text-2xl cursor-pointer transition hover:scale-110"
-                    />
+
+                    <div className="flex items-center gap-3 justify-around w-full md:w-[40%]">
+                      <input
+                        type="number"
+                        name="qty"
+                        value={qty}
+                        onChange={(e) => handleQtyChange(id, e.target.value)}
+                        className="border-2 p-1 font-semibold text-[1.2rem] text-center"
+                      />
+                      <FaRegWindowClose
+                        onClick={() => removeFromCart(id)}
+                        className="text-2xl cursor-pointer transition hover:scale-110"
+                      />
+                    </div>
+
                   </div>
                 )
               )}
             </div>
 
             {/* CheckOut */}
-            <div className="w-1/2 flex flex-col items-normal gap-5 mt-14">
+            <div className=" flex flex-col items-center md:items-start gap-5 mt-14 md:w-1/2">
               <h1 className="text-2xl font-semibold whitespace-nowrap">
                 Items Total.
               </h1>

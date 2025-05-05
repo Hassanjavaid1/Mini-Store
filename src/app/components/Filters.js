@@ -90,7 +90,7 @@ function Filters() {
 
   return (
     <>
-      <section className="fixed left-0 sm:sticky sm:top-0 sm:h-[100vh] bg-gray-200 sm:bg-[#38090a2e] py-6 px-2 lg:w-[15%]">
+      <section className="fixed left-0 sm:sticky sm:top-0 sm:h-[100vh] bg-gray-200 sm:bg-[#38090a2e] py-3 md:py-6 px-2 lg:w-[15%]">
         <RxHamburgerMenu
           className="text-3xl sm:hidden"
           onClick={handleToggle}
@@ -240,7 +240,7 @@ function Filters() {
 
           {/* Filter Button */}
           <button
-            onClick={handleFilters}
+            onClick={() => {handleFilters(), handleToggle()}}
             className="bg-[#3b82f6] text-white px-8 py-2 cursor-pointer text-lg mt-6"
           >
             Apply
