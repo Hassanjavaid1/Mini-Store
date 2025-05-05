@@ -23,7 +23,7 @@ function Page() {
       item.id === id ? { ...item, qty: newQty > 0 ? newQty : 1 } : item
     );
     setSaveData(updated);
-    localStorage.setItem("cartData", JSON.stringify(updated));
+   // localStorage.setItem("cartData", JSON.stringify(updated));
   };
 
   useEffect(() => {
