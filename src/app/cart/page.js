@@ -37,7 +37,7 @@ function Page() {
 
   return (
     <>
-      <div className="container mx-auto p-16 py-24">
+      <div className="container mx-auto p-1 md:p-16 md:py-24">
         {saveData.length == 0 || !saveData ? (
           <div className="py-[4rem]">
             <h1 className="text-3xl border-b-2 text-center pb-8">
@@ -61,7 +61,7 @@ function Page() {
                         height={300}
                         width={100}
                         loading="lazy"
-                        className="object-center w-auto"
+                        className="object-center w-auto h-[100px] sm:h-[300px]"
                       />
                       <div>
                         <p className="font-semibold">{title?.slice(0, 50)}</p>
@@ -92,18 +92,22 @@ function Page() {
 
             {/* CheckOut */}
             <div className="w-1/2 flex flex-col items-normal gap-5 mt-14">
-              <h1 className="text-2xl font-semibold">Items Total.</h1>
+              <h1 className="text-2xl font-semibold whitespace-nowrap">
+                Items Total.
+              </h1>
               <div className="flex items-center justify-between gap-2">
-                <h3>Shipping Fee</h3>
+                <h3 className="whitespace-nowrap">Shipping Fee</h3>
                 <span>$10</span>
               </div>
               <div className="flex items-center justify-between gap-2 font-semibold">
-                <h3>Overall Total</h3>
-                <span className="text-2xl">${Number(totalPrice).toFixed(2)}</span>
+                <h3 className="whitespace-nowrap">Overall Total</h3>
+                <span className="text-2xl">
+                  ${Number(totalPrice).toFixed(2)}
+                </span>
               </div>
               <button
                 onClick={() => toast.warn("Coming soon.")}
-                className="mt-4 bg-blue-500 px-8 py-3 text-2xl text-white transition hover:scale-95 focus:border-0"
+                className="mt-4 bg-blue-500 px-8 py-3 text-2xl text-white transition hover:scale-95 focus:border-0 whitespace-nowrap w-fit"
               >
                 Checkout Now
               </button>

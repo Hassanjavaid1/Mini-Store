@@ -41,7 +41,7 @@ function Navbar() {
       <div className="container mx-auto p-4">
         <div className="flex items-center justify-between gap-2">
           <h1
-            className="text-3xl font-semibold cursor-pointer hidden sm:block"
+            className={`text-3xl font-semibold cursor-pointer ${currentPath == '/cart'?'block':"hidden"} sm:block`}
             onClick={() => router.push("/")}
           >
             Mini Store.
@@ -50,16 +50,16 @@ function Navbar() {
             onSubmit={(e) => handleSearch(e)}
             className={`${
               currentPath == "/cart" ? "hidden" : "flex"
-            } items-center gap-2`}
+            } items-center gap-4 sm:gap-2 `}
           >
             <input
               type="text"
               placeholder="Search products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="text-lg bg-gray-200 py-3 px-6 border-0 outline-none"
+              className="text-lg bg-gray-200 py-3 px-6 border-0 outline-none w-full"
             />
-            <button className="bg-gray-200 text-lg font-semibold outline-none p-3 cursor-pointer hover:bg-[#3b82f6] hover:text-white">
+            <button className="bg-gray-200 text-lg font-semibold outline-none p-3 cursor-pointer hover:bg-[#3b82f6] hover:text-white hidden sm:block">
               Search
             </button>
             <div

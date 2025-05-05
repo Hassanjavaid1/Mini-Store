@@ -90,13 +90,16 @@ function Filters() {
 
   return (
     <>
-      <section className="fixed left-0 sm:sticky sm:top-0 h-[100vh] bg-gray-200 sm:bg-[#38090a2e] py-6 px-2 lg:w-[15%]">
+      <section className="fixed left-0 sm:sticky sm:top-0 sm:h-[100vh] bg-gray-200 sm:bg-[#38090a2e] py-6 px-2 lg:w-[15%]">
         <RxHamburgerMenu
           className="text-3xl sm:hidden"
           onClick={handleToggle}
         />
 
-        <form onSubmit={(e) => e.preventDefault()} className={`${isVisible?"block":"hidden"} sm:block`}>
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className={`${isVisible ? "block" : "hidden"} sm:block`}
+        >
           {/* Categoy Filter */}
           <div>
             <h2 className="px-2 font-semibold text-lg my-2">By Categories</h2>
