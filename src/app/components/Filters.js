@@ -240,7 +240,9 @@ function Filters() {
 
           {/* Filter Button */}
           <button
-            onClick={() => {handleFilters(), handleToggle()}}
+            onClick={() => {
+              handleFilters(), handleToggle();
+            }}
             className="bg-[#3b82f6] text-white px-8 py-2 cursor-pointer text-lg mt-6"
           >
             Apply

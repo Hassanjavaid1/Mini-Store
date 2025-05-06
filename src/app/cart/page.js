@@ -23,7 +23,7 @@ function Page() {
       item.id === id ? { ...item, qty: newQty > 0 ? newQty : 1 } : item
     );
     setSaveData(updated);
-   // localStorage.setItem("cartData", JSON.stringify(updated));
+    // localStorage.setItem("cartData", JSON.stringify(updated));
   };
 
   useEffect(() => {
@@ -88,7 +88,6 @@ function Page() {
                         className="text-2xl cursor-pointer transition hover:scale-110"
                       />
                     </div>
-
                   </div>
                 )
               )}
